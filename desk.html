@@ -52,6 +52,19 @@
         font-size: 20px;
     }
 
+    .hintIncorrect {
+        color: rgba(229, 45, 16, 0.87);
+        font-family: "Jersey 15", sans-serif;
+
+        position: absolute;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        top: 30%;
+        left: 35%;
+        font-size: 20px;
+    }
+
     .screen {
         display: flex;
         flex-direction: row;
@@ -192,7 +205,17 @@
     } */
 
 
-    @media(min-width:1200px) {}
+    @media(min-width:1200px) {
+        .incense{
+
+        height: 100px;
+        width: 120px;
+
+        position:fixed;
+        left: 5%;
+        bottom: 6%;
+    }
+    }
 </style>
 
 <body>
@@ -206,6 +229,7 @@
                 <button class="pcBtn"></button>
                 <div class="signal"></div>
                 <p class="hint" style="display: none;">please inert the password</p>
+                <p class="hintIncorrect" style="display: none;">Incorrect number</p>
                 <div class="screen" style="display: none;">
                     <input type="text" id="key1">
                     <input type="text" id="key2">
@@ -232,14 +256,42 @@
             const coreBtn = document.getElementsByClassName("coreBtn")[0];
             const screenElement = document.getElementsByClassName("screen")[0];
             const hint = document.getElementsByClassName("hint")[0];
+            const hintIncorrect = document.getElementsByClassName("hintIncorrect")[0];
 
             const pcBtn = document.getElementsByClassName("pcBtn")[0];
             const pcSignal = document.getElementsByClassName("signal")[0];
             let pcSignalOn = false;
 
             keyBtn.addEventListener('click', () => {
-                if (key1.value == "0" && key2.value == "4" && key3.value == "0" && key4.value == "3") {
+                if (key1.value == "0" && key2.value == "0" && key3.value == "0" && key4.value == "0") {
                     window.location.replace("letter.html");
+                } else{
+                    hint.setAttribute("style", "display:none");
+                    hintIncorrect.setAttribute("style", "display:''");
+                    key1.style.color = "rgba(229, 45, 16, 0.87)";
+                    key2.style.color = "rgba(229, 45, 16, 0.87)";
+                    key3.style.color = "rgba(229, 45, 16, 0.87)";
+                    key4.style.color = "rgba(229, 45, 16, 0.87)";
+                    key1.style.borderColor = "rgba(229, 45, 16, 0.87)";
+                    key2.style.borderColor = "rgba(229, 45, 16, 0.87)";
+                    key3.style.borderColor = "rgba(229, 45, 16, 0.87)";
+                    key4.style.borderColor = "rgba(229, 45, 16, 0.87)";
+                    setTimeout(()=>{
+                        hint.setAttribute("style", "display:''");
+                        hintIncorrect.setAttribute("style", "display:none");
+                        key1.value = '';
+                        key2.value = '';
+                        key3.value = '';
+                        key4.value = '';
+                        key1.style.color = "rgba(35, 228, 48, 0.87)";
+                        key2.style.color = "rgba(35, 228, 48, 0.87)";
+                        key3.style.color = "rgba(35, 228, 48, 0.87)";
+                        key4.style.color = "rgba(35, 228, 48, 0.87)";
+                        key1.style.borderColor = "rgba(35, 228, 48, 0.87)";
+                        key2.style.borderColor = "rgba(35, 228, 48, 0.87)";
+                        key3.style.borderColor = "rgba(35, 228, 48, 0.87)";
+                        key4.style.borderColor = "rgba(35, 228, 48, 0.87)";
+                    }, 1500);
                 }
             })
 
