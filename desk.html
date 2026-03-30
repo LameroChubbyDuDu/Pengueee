@@ -157,15 +157,23 @@
         width: 100vw;
     }
 
+
     @media (orientation: portrait) {
         .askToRotate {
             display: revert;
+        }
+        .desk-page {
+            display: none;
         }
     }
 
     @media (orientation: landscape) {
         .askToRotate {
             display: none;
+        }
+
+        .desk-page {
+            display: revert;
         }
     }
 
@@ -174,7 +182,7 @@
 </style>
 
 <body>
-    <div class="askToRotate" style="display: none;">請旋轉螢幕</div>
+    <h3 class="askToRotate" style="display: none;">請旋轉螢幕</h3>
     <div class="desk-page">
 
         <div class="back">
