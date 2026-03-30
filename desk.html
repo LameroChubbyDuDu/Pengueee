@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Titan+One&family=Vast+Shadow&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Titan+One&family=Vast+Shadow&display=swap');
-
+    @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
     body {
         align-items: center;
         justify-content: center;
@@ -31,6 +29,20 @@
         position: relative;
     }
 
+    
+
+    .hint{
+        color: rgba(35, 228, 48, 0.87);
+        font-family: "Jersey 15", sans-serif;
+
+        position: absolute;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        top: 30%;
+        left: 33%;
+    }
+
     .screen{
         display: flex;
         flex-direction:row;
@@ -41,23 +53,27 @@
 
         top: 40%;
         width: 50%;
+        gap: 5%;
+        left: 40%;
 
     }
 
-    .hint{
-        color: rgba(35, 228, 48, 0.87);
-    }
-
-    .key1 .key2 .key3 {
+    .key1, .key2, .key3 {
         color: rgba(35, 228, 48, 0.87);
         font-size: 30px;
         border-color: rgba(35, 228, 48, 0.87);
-        font-family: "Google Sans Code", monospace;
-        font-optical-sizing: auto;
+        border-style: dashed;
+        /* border-radius: 20%; */
+        font-family: "Jersey 15", sans-serif;
 
-        width: 50px;
-        height: 50px;
+        width: 15px;
+        height: 15px;
+        
         background-color: transparent;
+
+        caret-color: rgba(35, 228, 48, 0.87);
+
+        outline: none;
     }
 
 
@@ -67,8 +83,8 @@
 <body>
     <div class="desk-page">
         <div class="pc">
-            <div class="screen">
-                <p class="hint">please inert the password</p>
+            <p class="hint">please inert the password</p>
+            <div class="screen">   
                 <input type="text" class="key1">
                 <input type="text" class="key2">
                 <input type="text" class="key3">
