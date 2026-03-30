@@ -3,6 +3,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Titan+One&family=Vast+Shadow&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Titan+One&family=Vast+Shadow&display=swap');
+
     body {
         align-items: center;
         justify-content: center;
@@ -19,38 +20,52 @@
         text-align: center;
     }
 
-    .pc{
+    .pc {
         background-image: url("img/pc.png");
         width: 500px;
         height: 500px;
 
         background-repeat: no-repeat;
         background-color: transparent;
+
+        position: relative;
+    }
+
+    .screen{
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+
+        top: 15%;
+        
     }
 
     .key1 .key2 .key3 {
-        color:rgba(35, 228, 48, 0.87);
+        color: rgba(35, 228, 48, 0.87);
         font-size: 30px;
         border-color: rgba(35, 228, 48, 0.87);
         font-family: "Google Sans Code", monospace;
         font-optical-sizing: auto;
 
-        position: fixed;
-        top: 5vw;
+        width: 10px;
+        height: 10px;
+        background-color: transparent;
     }
 
 
-    @media(min-width:1200px) {
-
-    }
+    @media(min-width:1200px) {}
 </style>
 
 <body>
     <div class="desk-page">
-        <div class="pc"></div>
-        <input type="number" class="key1">
-        <input type="number" class="key2">
-        <input type="number" class="key3">
+        <div class="pc">
+            <div class="screen">
+                <input type="number" class="key1">
+                <input type="number" class="key2">
+                <input type="number" class="key3">
+            </div>
+        </div>
+
     </div>
 
     <body>
