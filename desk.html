@@ -2,6 +2,7 @@
 <html>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
     body {
         align-items: center;
         justify-content: center;
@@ -18,6 +19,11 @@
         text-align: center;
     }
 
+    .back{
+        display: flex;
+        flex-direction: row;
+    }
+
     .pc {
         background-image: url("img/pc.png");
         width: 500px;
@@ -27,11 +33,13 @@
         background-color: transparent;
 
         position: relative;
+        
+        margin-left: 10px;
     }
 
-    
 
-    .hint{
+
+    .hint {
         color: rgba(35, 228, 48, 0.87);
         font-family: "Jersey 15", sans-serif;
 
@@ -44,9 +52,9 @@
         font-size: 20px;
     }
 
-    .screen{
+    .screen {
         display: flex;
-        flex-direction:row;
+        flex-direction: row;
         justify-items: center;
         text-align: center;
 
@@ -59,7 +67,30 @@
 
     }
 
-    .key1, .key2, .key3 {
+    .pcBtn{
+        background-image: url("img/pc-on-off.png");
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        bottom: 12%;
+        right: 20%;
+        border-radius: 50%;
+    }
+
+    .signal{
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background-color: rgba(56, 56, 56, 0.87);
+        position: absolute;
+        bottom: 12%;
+        right: 28%;
+    }
+
+    #key1,
+    #key2,
+    #key3 {
         color: rgba(35, 228, 48, 0.87);
         font-size: 30px;
         border-color: rgba(35, 228, 48, 0.87);
@@ -78,25 +109,107 @@
         outline: none;
     }
 
+    .keyBtn {
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        text-align: center;
+        align-items: center;
+        height: 30px;
+        width: 50px;
+        background-color: rgba(35, 228, 48, 0.87);
+        border: none;
+        border-radius: 10px;
+        font-family: "Jersey 15", sans-serif;
+        font-size: 15px;
+        color: #F1E7D2;
+    }
+
+    .keyBtn:hover {
+        background-color: rgba(34, 167, 43, 0.87);
+        color: #bda97f;
+    }
+
+    .core{
+        background-image: url("img/core.png");
+        background-color: transparent;
+        height: 500px;
+        width:180px;
+        position: relative;
+    }
+
+    .coreBtn{
+        background-image: url("img/on-off.png");
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        bottom: 20%;
+        right: 15%;
+        width: 30px;
+        height:30px;
+        
+    }
+
 
     @media(min-width:1200px) {}
 </style>
 
 <body>
     <div class="desk-page">
-        <div class="pc">
-            <p class="hint">please inert the password</p>
-            <div class="screen">   
-                <input type="text" class="key1">
-                <input type="text" class="key2">
-                <input type="text" class="key3">
+        <div class="back">
+            <div class="core"><button class="coreBtn"></button>
             </div>
+            <div class="pc">
+                <button class="pcBtn"></button>
+                <div class="signal"></div>
+                <p class="hint" style="display: none;">please inert the password</p>
+                <div class="screen"  style="display: none;">
+                    <input type="text" id="key1">
+                    <input type="text" id="key2">
+                    <input type="text" id="key3">
+                </div>
+                <input type="button" value="submit" class="keyBtn"  style="display: none;">
+            </div>
+            
         </div>
 
     </div>
 
     <body>
         <script>
+            const key1 = document.getElementById("key1");
+            const key2 = document.getElementById("key2");
+            const key3 = document.getElementById("key3");
+            const keyBtn = document.getElementsByClassName("keyBtn")[0];
+            const coreBtn = document.getElementsByClassName("coreBtn")[0];
+            const screenElement = document.getElementsByClassName("screen")[0];
+            const hint = document.getElementsByClassName("hint")[0];
+
+            const pcBtn = document.getElementsByClassName("pcBtn")[0];
+            const pcSignal = document.getElementsByClassName("signal")[0];
+            let pcSignalOn = false;
+
+            keyBtn.addEventListener('click', () => {
+                if (key1.value == "2" && key2.value == "2" && key3.value == "2") {
+                    alert("Congrats!!");
+                    // console.log("correct");
+                }
+            })
+
+            coreBtn.addEventListener('click', ()=>{
+                if(pcSignalOn == true){
+                    hint.setAttribute("style", "display:''");
+                    screenElement.setAttribute("style", "display:''");
+                    keyBtn.setAttribute("style", "display:''");
+                    coreBtn.style.outlineColor=rgba(35, 228, 48, 0.87);
+                }
+                
+            })
+
+            pcBtn.addEventListener('click', ()=>{
+                pcSignal.style.backgroundColor="rgba(35, 228, 48, 0.87)";
+                pcSignalOn = true;
+            })
         </script>
 
 </html>
