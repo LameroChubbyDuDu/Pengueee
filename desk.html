@@ -10,7 +10,7 @@
 
         display: flex;
 
-        background-color: rgb(77, 77, 77);
+        background-color: rgb(139, 139, 139);
     }
 
     .desk-page {
@@ -63,7 +63,7 @@
         top: 40%;
         width: 50%;
         gap: 5%;
-        left: 38%;
+        left: 32%;
 
     }
 
@@ -90,7 +90,8 @@
 
     #key1,
     #key2,
-    #key3 {
+    #key3,
+    #key4 {
         color: rgba(35, 228, 48, 0.87);
         font-size: 30px;
         border-color: rgba(35, 228, 48, 0.87);
@@ -150,6 +151,19 @@
 
     }
 
+    .incense{
+        background-image: url("img/incense.png");
+        background-position: center;
+        background-size: contain;
+
+        height: 250px;
+        width: 300px;
+
+        position:fixed;
+        left: 5%;
+        bottom: 6%;
+    }
+
     /* .askToRotate {
         background-color: black;
         color: beige;
@@ -196,10 +210,14 @@
                     <input type="text" id="key1">
                     <input type="text" id="key2">
                     <input type="text" id="key3">
+                    <input type="text" id="key4">
                 </div>
                 <input type="button" value="submit" class="keyBtn" style="display: none;">
             </div>
 
+        </div>
+        <div class="front">
+            <div class="incense"></div>
         </div>
 
     </div>
@@ -209,6 +227,7 @@
             const key1 = document.getElementById("key1");
             const key2 = document.getElementById("key2");
             const key3 = document.getElementById("key3");
+            const key4 = document.getElementById("key4");
             const keyBtn = document.getElementsByClassName("keyBtn")[0];
             const coreBtn = document.getElementsByClassName("coreBtn")[0];
             const screenElement = document.getElementsByClassName("screen")[0];
@@ -219,9 +238,8 @@
             let pcSignalOn = false;
 
             keyBtn.addEventListener('click', () => {
-                if (key1.value == "2" && key2.value == "2" && key3.value == "2") {
-                    alert("Congrats!!");
-                    // console.log("correct");
+                if (key1.value == "0" && key2.value == "4" && key3.value == "0" && key4.value == "3") {
+                    window.location.replace("letter.html");
                 }
             })
 
