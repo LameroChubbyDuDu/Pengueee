@@ -164,19 +164,57 @@
 
     }
 
-    .incense{
+    .incense {
         background-image: url("img/incense.png");
         background-position: center;
         background-size: contain;
 
+        /* height: 100px;
+        width: 120px; */
         height: 250px;
         width: 300px;
-
-        position:fixed;
+        position: fixed;
         left: 5%;
         bottom: 6%;
     }
 
+    .smoke {
+        background-image: url("img/smoke.png");
+        height: 150px;
+        width: 150px;
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: fixed;
+        left: 28%;
+        bottom: 40%;
+
+        filter: blur(2px);
+
+        animation: smokeAnimation 3s ease-in-out infinite;
+    }
+
+    @keyframes smokeAnimation {
+        0% {
+            filter:blur(2px);
+            /* opacity: 0.9; */
+        }
+        30%{
+            transform: rotateY(-20deg);
+            filter:blur(3px);
+            /* opacity: 0.8; */
+        }
+        75%{
+            transform: rotateY(-5deg);
+            filter:blur(2px);
+            /* opacity: 0.8; */
+        }
+        100% {
+            filter:blur(3px);
+            transform: rotateY(15deg);
+            /* opacity: 0.9; */
+        }
+    }
     /* .askToRotate {
         background-color: black;
         color: beige;
@@ -206,15 +244,13 @@
 
 
     @media(min-width:1200px) {
-        .incense{
+        .incense {
+            /* height: 250px;
+            width: 300px; */
 
-        height: 100px;
-        width: 120px;
-
-        position:fixed;
-        left: 5%;
-        bottom: 6%;
-    }
+            height: 100px;
+            width: 120px;
+        }
     }
 </style>
 
@@ -241,7 +277,9 @@
 
         </div>
         <div class="front">
-            <div class="incense"></div>
+            <div class="incense">
+                <div class="smoke"></div>
+            </div>
         </div>
 
     </div>
@@ -265,7 +303,7 @@
             keyBtn.addEventListener('click', () => {
                 if (key1.value == "0" && key2.value == "0" && key3.value == "0" && key4.value == "0") {
                     window.location.replace("letter.html");
-                } else{
+                } else {
                     hint.setAttribute("style", "display:none");
                     hintIncorrect.setAttribute("style", "display:''");
                     key1.style.color = "rgba(229, 45, 16, 0.87)";
@@ -276,7 +314,7 @@
                     key2.style.borderColor = "rgba(229, 45, 16, 0.87)";
                     key3.style.borderColor = "rgba(229, 45, 16, 0.87)";
                     key4.style.borderColor = "rgba(229, 45, 16, 0.87)";
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         hint.setAttribute("style", "display:''");
                         hintIncorrect.setAttribute("style", "display:none");
                         key1.value = '';
@@ -306,8 +344,16 @@
             })
 
             pcBtn.addEventListener('click', () => {
-                pcSignal.style.backgroundColor = "rgba(35, 228, 48, 0.87)";
-                pcSignalOn = true;
+                if (!pcSignalOn) {
+                    
+                    pcSignal.style.backgroundColor = "rgba(35, 228, 48, 0.87)";
+                    pcSignalOn = true;
+                }else{
+                    pcSignal.style.backgroundColor = "rgba(56, 56, 56, 0.87)";
+                    pcSignalOn = false;
+                }
+                
+                
             })
         </script>
 
