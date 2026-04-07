@@ -176,6 +176,7 @@
         position: absolute;
         left: 5vw;
         bottom: 5vh;
+        z-index: 9999;
     }
 
     .smoke {
@@ -190,6 +191,7 @@
         bottom: 40vh;
 
         filter: blur(2px);
+        z-index: 9999;
 
         animation: smokeAnimation 3s ease-in-out infinite;
     }
@@ -256,6 +258,9 @@
     <div class="desk-page">
 
         <div class="back">
+            <div class="incense">
+                <div class="smoke"></div>
+            </div>
             <div class="core"><button class="coreBtn"></button>
             </div>
             <div class="pc">
@@ -272,11 +277,10 @@
                 <input type="button" value="submit" class="keyBtn" style="display: none;">
             </div>
 
+
         </div>
         <div class="front">
-            <div class="incense">
-                <div class="smoke"></div>
-            </div>
+            
         </div>
 
     </div>
