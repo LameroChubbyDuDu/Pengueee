@@ -11,29 +11,52 @@
 
         display: flex;
 
-        background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 10px, transparent 5px);
-        background-size: 10px 10px ;
+        background-color: antiquewhite;
+        /* background:linear-gradient(90deg, rgb(216, 68, 68) 5px, rgb(247, 175, 175) 10px, transparent 5px);
+        background-size: 10px 10px ; */
+    }
+
+    .penguin-box{
+        align-items: center;
+        justify-content:center;
+        text-align: center;
+
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        top: 30vh;
+    }
+    
+    .penguin-1, .penguin-2, .penguin-3{
+        background-image: url("img/penguin.PNG");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 200px;
+        height:200px;
+
+        animation: danceAnimation 2s linear infinite;
     }
 
 
 
     @media(min-width:1200px) {}
 
-    @keyframes letterAnimation {
+    @keyframes danceAnimation {
         0%{
-            top: -38%;
-            clip-path: inset(100% 0 0 0);
+            transform:rotateZ(360deg);
         }
         100%{
-            top: -40%;
-            clip-path: inset(0% 0 0 0);
+            transform:rotateZ(-360deg);
         }
     }
 </style>
 
 <body>
-    <div class="desk-page">
-        <div class="penquin-1"></div>
+    <div class="penguin-box">
+        <div class="penguin-1"></div>
+        <div class="penguin-2"></div>
+        <div class="penguin-3"></div>
     </div>
 
     <body>
