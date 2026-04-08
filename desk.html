@@ -52,6 +52,19 @@
         font-size: 20px;
     }
 
+    .hintSuccess {
+        color: rgb(20, 47, 253);
+        font-family: "Jersey 15", sans-serif;
+
+        position: absolute;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        top: 30%;
+        left: 35%;
+        font-size: 20px;
+    }
+
     .hintIncorrect {
         color: rgba(229, 45, 16, 0.87);
         font-family: "Jersey 15", sans-serif;
@@ -217,6 +230,39 @@
             /* opacity: 0.9; */
         }
     }
+
+    .penguin-box{
+        align-items: center;
+        justify-content:center;
+        text-align: center;
+
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        top: 10px;
+        z-index: 9999;
+        left: 10px;
+    }
+    
+    .penguin-1, .penguin-2, .penguin-3{
+        background-image: url("img/penguin.PNG");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 50px;
+        height:50px;
+
+        animation: danceAnimation 2s linear infinite;
+    }
+
+    @keyframes danceAnimation {
+        0%{
+            transform:rotateZ(360deg);
+        }
+        100%{
+            transform:rotateZ(-360deg);
+        }
+    }
     /* .askToRotate {
         background-color: black;
         color: beige;
@@ -258,9 +304,9 @@
     <div class="desk-page">
 
         <div class="back">
-            <div class="incense">
+            <!-- <div class="incense">
                 <div class="smoke"></div>
-            </div>
+            </div> -->
             <div class="core"><button class="coreBtn"></button>
             </div>
             <div class="pc">
@@ -268,12 +314,19 @@
                 <div class="signal"></div>
                 <p class="hint" style="display: none;">please inert the password</p>
                 <p class="hintIncorrect" style="display: none;">Incorrect number</p>
+                <p class="hintSuccess" style="display: none;">Correct password!</p>
                 <div class="screen" style="display: none;">
                     <input type="text" id="key1">
                     <input type="text" id="key2">
                     <input type="text" id="key3">
                     <input type="text" id="key4">
+                    <div class="penguin-box" style="display: none;">
+                        <div class="penguin-1"></div>
+                        <div class="penguin-2"></div>
+                        <div class="penguin-3"></div>
+                    </div>
                 </div>
+                
                 <input type="button" value="submit" class="keyBtn" style="display: none;">
             </div>
 
@@ -296,6 +349,8 @@
             const screenElement = document.getElementsByClassName("screen")[0];
             const hint = document.getElementsByClassName("hint")[0];
             const hintIncorrect = document.getElementsByClassName("hintIncorrect")[0];
+            const hintSuccess = document.getElementsByClassName("hintSuccess")[0];
+            const penguinBox = document.getElementsByClassName("penguin-box")[0];
 
             const pcBtn = document.getElementsByClassName("pcBtn")[0];
             const pcSignal = document.getElementsByClassName("signal")[0];
@@ -303,7 +358,18 @@
 
             keyBtn.addEventListener('click', () => {
                 if (key1.value == "0" && key2.value == "0" && key3.value == "0" && key4.value == "0") {
-                    window.location.replace("cake.html");
+                    // window.location.replace("cake.html");
+                    hint.setAttribute("style", "display:none");
+                    key1.setAttribute("style", "display:none");
+                    key2.setAttribute("style", "display:none");
+                    key3.setAttribute("style", "display:none");
+                    key4.setAttribute("style", "display:none");
+                    keyBtn.setAttribute("style", "display:none");
+                    hintSuccess.setAttribute("style", "display:''");
+                    penguinBox.style.display = '';
+                    setTimeout(() => {
+                        window.location.replace("cake.html");
+                    }, 2000);
                 } else {
                     hint.setAttribute("style", "display:none");
                     hintIncorrect.setAttribute("style", "display:''");
