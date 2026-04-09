@@ -296,10 +296,10 @@
                 <p class="hintIncorrect" style="display: none;">Incorrect number</p>
                 <p class="hintSuccess" style="display: none;">Correct password!</p>
                 <div class="screen" style="display: none;">
-                    <input type="text" id="key1">
-                    <input type="text" id="key2">
-                    <input type="text" id="key3">
-                    <input type="text" id="key4">
+                    <input type="text" id="key1" maxlength="1" class="key">
+                    <input type="text" id="key2" maxlength="1" class="key">
+                    <input type="text" id="key3" maxlength="1" class="key">
+                    <input type="text" id="key4" maxlength="1" class="key">
                     <div class="penguin-box" style="display: none;">
                         <div class="penguin-1"></div>
                         <div class="penguin-2"></div>
@@ -324,6 +324,7 @@
             const key2 = document.getElementById("key2");
             const key3 = document.getElementById("key3");
             const key4 = document.getElementById("key4");
+            // const key = document.getElementsByClassName("key")[0];
             const keyBtn = document.getElementsByClassName("keyBtn")[0];
             const coreBtn = document.getElementsByClassName("coreBtn")[0];
             const screenElement = document.getElementsByClassName("screen")[0];
@@ -335,6 +336,18 @@
             const pcBtn = document.getElementsByClassName("pcBtn")[0];
             const pcSignal = document.getElementsByClassName("signal")[0];
             let pcSignalOn = false;
+
+            const inputFocus = document.querySelectorAll(".key");
+
+            inputFocus.forEach((input,index) => {
+                input.addEventListener("input", ()=>{
+                    if(input.value.length >= input.maxLength && inputFocus[index+1]){
+                        inputFocus[index+1].focus();
+                    }else if(input.value.length >= input.maxLength && index == 3){
+                        inputFocus[0].focus();
+                    }
+                })
+            });
 
             keyBtn.addEventListener('click', () => {
                 if (key1.value == "0" && key2.value == "4" && key3.value == "0" && key4.value == "3") {
